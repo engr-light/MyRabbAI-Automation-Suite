@@ -7,9 +7,9 @@ import csv
 import os
 
 # --- Configuration ---
-LOGIN_URL = "https://myrabbai.tus-e.com/login"
+LOGIN_URL = "[https://portal.example-edtech.com/login](https://portal.example-edtech.com/login)"
 # UPDATE THIS: The exact URL where you add a new question after logging in
-ADD_ASSET_URL = "https://myrabbai.tus-e.com/admin/add-question" 
+ADD_ASSET_URL = "[https://portal.example-edtech.com/login](https://portal.example-edtech.com/login)" 
 
 USERNAME = "REDACTED_FOR_GITHUB" 
 PASSWORD = "REDACTED_FOR_GITHUB"        
