@@ -11,7 +11,7 @@ import csv
 import os
 
 # --- 1. MyRabbAI Platform Credentials ---
-LOGIN_URL = "https://myrabbai.tus-e.com/login" 
+LOGIN_URL = "[https://portal.example-edtech.com/login](https://portal.example-edtech.com/login)" 
 USERNAME = "REDACTED_FOR_GITHUB" 
 PASSWORD = "REDACTED_FOR_GITHUB"        
 
@@ -22,7 +22,7 @@ ALERT_RECEIVER_EMAIL = "REDACTED_FOR_GITHUB"   # Where you want to receive the a
 LATENCY_THRESHOLD = 10.0                        # Send a warning if load time is higher than this (seconds)
 
 # --- 3. Configuration ---
-LOG_FILE = "MyRabbAI_Daily_Logs.csv"
+LOG_FILE = "EdTech startup.csv"
 
 def send_email_alert(subject, body):
     """Sends a standardized email alert to the QA Engineer."""
@@ -51,7 +51,7 @@ def log_to_excel(status, details, load_time):
         writer.writerow([now.strftime('%Y-%m-%d'), now.strftime('%H:%M'), status, load_time, details])
 
 def daily_login_check():
-    print(f"--- MyRabbAI Daily Login Check: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M')} ---")
+    print(f"--- EdTech startup Daily Login Check: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M')} ---")
     
     options = webdriver.EdgeOptions()
     # options.add_argument('--headless') # Keep commented out while testing
@@ -85,7 +85,7 @@ def daily_login_check():
             
             # Trigger Proactive Warning if load time is too slow
             if load_time > LATENCY_THRESHOLD:
-                subject = "⚠️ PROACTIVE WARNING: MyRabbAI High Latency"
+                subject = "⚠️ PROACTIVE WARNING: EdTech startup High Latency"
                 body = f"The automated daily check passed, but latency is high.\n\nLoad Time: {load_time} seconds.\n\nLog this as a proactive blocker before the 9:00 AM cadence."
                 send_email_alert(subject, body)
             
@@ -97,7 +97,7 @@ def daily_login_check():
             log_to_excel("FAILED", "Dashboard timed out or credentials rejected.", load_time)
             
             # Trigger Critical Alert for Failure
-            subject = "🚨 CRITICAL FAILURE: MyRabbAI Login Down"
+            subject = "🚨 CRITICAL FAILURE: EdTech startup Login Down"
             body = f"The automated daily check failed.\n\nError: Dashboard timed out or credentials rejected.\nLoad Time: {load_time} seconds.\n\nInvestigate immediately."
             send_email_alert(subject, body)
                 
